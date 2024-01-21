@@ -1,0 +1,15 @@
+﻿@model int;
+@{
+    
+    ViewBag.Title = "1 To N Numbers";
+}
+<h1>ViewBag.Title</h1>
+<label class="text-primary">Enter limit number!</label>
+<input type="number" name="n" />
+@ViewBag.Number ="n"
+
+@for (int i = 1; i <= int.Parse(ViewBag.Number); i++)
+{
+    <li>.@i</li>
+}
+
