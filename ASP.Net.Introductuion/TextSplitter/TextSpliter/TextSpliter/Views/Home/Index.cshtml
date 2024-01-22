@@ -1,0 +1,35 @@
+﻿@model TextViewModel
+@{
+    ViewData["Title"] = "Text Spliter";
+}
+<h1 class="text-black fw-bold align-middle">@ViewBag.Title</h1>
+<p></p>
+
+<form asp-controller="Home" asp-action="Split" method="post">
+    <div class="col-4">
+        <label>Enter text to split </label>
+        <input asp-for="@Model.Text" class="form-control" />
+        <span asp-validation-for="@Model.Text" class="small text-danger col-2"></span>
+        <input class="btn btn-danger mt-0 float-lg-right "type="submit"value="Split Text" />
+    </div>
+</form>
+
+
+<p></p>
+
+@if (Model.Text!=null)
+{
+    
+    foreach (var word in Model.Text.Split(" ",StringSplitOptions.RemoveEmptyEntries))
+    {
+        <div class="card bg-light col-6">
+            <div class="card-body">
+                <p class="text-black fw-bold">@word </p>
+
+            </div>
+        </div>
+    }
+}
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
